@@ -12,7 +12,7 @@
 | last_name       | string     | null: false                   |
 | last_name_kana  | string     | null: false                   |
 | birth_date      | date       | null: false                   |
-| sex_id          | integer    | null: false, foreign_key: true |
+| sex_id          | integer    | null: false                   |
 
 
 ### Association
@@ -65,22 +65,23 @@
 | ------- | ---------- | ------------------------------ |
 | tittle  | string     | null: false                    |
 | text    | text       | null: false                    |
-| user    | references | null: false, foreign_key: true |
+| user_id | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- has_many: comments
 
 ## comments テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| text    | text       | null: false                    |
-| user    | references | null: false, foreign_key: true |
+| text    | text       |                                |
+| user_id | integer    | null: false                    |
+| post_id | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
-
-
+- belongs_to :post
 * ...
