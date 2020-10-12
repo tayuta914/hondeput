@@ -15,7 +15,7 @@
  */
 
  @import "bulma";
- 
- * {
-  box-sizing: border-box;
+
+ .notification:not(:last-child){
+	margin-bottom: 0;
 }

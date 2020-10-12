@@ -6,8 +6,8 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
   </head>
 
   <body>
@@ -23,37 +23,69 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      <%# <div id="navbarExampleTransparentExample" class="navmenu">
-        <div class="navbar-item">
-          <% link_to "投稿一覧"%> 
-
+    <nav class="navbar is-warning">
+      <div class="navbar-brand">
         <%= link_to root_path, class: "navbar-item" do %>
           <h1 class="title is-4" style="font-family: Impact;">hondeput</h1>
         <% end %>
+        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
 
-      <p class="control">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-gradient-3d-white" %>
-      </p>
-    <% else %>
-        <%= link_to "ログイン", new_user_session_path, class: "btn-gradient-3d-white" %>
-        <%= link_to "新規登録", new_user_registration_path, class: "btn-gradient-3d-orange" %>
-    <% end %>
+      <% if user_signed_in? %>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-item">
+            <%= link_to "新規投稿", output_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "人気投稿", new_post_path, class: "navbar-item button is-warning is-light" %>
+          </div>
 
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "ホンデプット一覧", users_path, class: " button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
+                </p>
+                <p class="control">
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+          <div class="navbar-item">
+            <%= link_to "新規投稿一覧", "#", class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-item">
+            <%= link_to "人気投稿一覧","#" , class: "navbar-item button is-warning is-light" %>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to "ログイン", new_user_session_path, class: "btn-gradient-3d-white" %>
+                </p>
+                <p class="control">
+                  <%= link_to "新規登録", new_user_registration_path, class: "btn-gradient-3d-orange" %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </nav>
     <%= yield %>
-
   </body>
 </html>
 
-  <%# 画面上部の「アクション共有プラットフォーム「ホンデプット」」帯部分 %>
-  <div class='title-contents'>
-   <h2 class='service-title'>
-       アクション共有プラットフォーム
-      　　「ホンデプット」
-     <%= image_tag "hondeput-main.png", class:"hondeput-main" %>
-   </h2>
-  </div>
-</div>
-  <%# 画面上部の「アクション共有プラットフォーム「ホンデプット」」帯部分 %>
-
-   font-family: Impact, sans-serif;
+ <%# <%= link_to image_tag("hondeput-logo-color.png", class:"hondeput-icon"), "#" %> 
