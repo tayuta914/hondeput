@@ -22,6 +22,38 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
+
+    <% if user_signed_in? %>
+      <%# <div id="navbarExampleTransparentExample" class="navmenu">
+        <div class="navbar-item">
+          <% link_to "投稿一覧"%> 
+
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1 class="title is-4" style="font-family: Impact;">hondeput</h1>
+        <% end %>
+
+      <p class="control">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn-gradient-3d-white" %>
+      </p>
+    <% else %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn-gradient-3d-white" %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn-gradient-3d-orange" %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>
+
+  <%# 画面上部の「アクション共有プラットフォーム「ホンデプット」」帯部分 %>
+  <div class='title-contents'>
+   <h2 class='service-title'>
+       アクション共有プラットフォーム
+      　　「ホンデプット」
+     <%= image_tag "hondeput-main.png", class:"hondeput-main" %>
+   </h2>
+  </div>
+</div>
+  <%# 画面上部の「アクション共有プラットフォーム「ホンデプット」」帯部分 %>
+
+   font-family: Impact, sans-serif;
