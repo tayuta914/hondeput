@@ -4,23 +4,17 @@
 
 | Column          | Type       | Options                       |
 | --------------- | -----------| ----------------------------- |
-| nickname        | string     | null: false                   |
+| username        | string     | null: false                   |
 | email           | string     | null: false                   |
 | password        | string     | null: false                   |
-| first_name      | string     | null: false                   |
-| first_name_kana | string     | null: false                   |
-| last_name       | string     | null: false                   |
-| last_name_kana  | string     | null: false                   |
-| birth_date      | date       | null: false                   |
-| sex_id          | integer    | null: false                   |
-
+| profile         | text       | null: false                   |
+| profile_image_id| string     | null: false                   |
 
 ### Association
 - has_many :room_users
 - has_many :rooms, through: room_users
 - has_many :messages
 - has_many :posts
-- has_many :comments
 
 ## rooms テーブル
 
@@ -66,22 +60,10 @@
 | tittle  | string     | null: false                    |
 | text    | text       | null: false                    |
 | user_id | references | null: false, foreign_key: true |
+| body    | string     | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- has_many: comments
 
-## comments テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| text    | text       |                                |
-| user_id | integer    | null: false                    |
-| post_id | integer    | null: false                    |
-
-### Association
-
-- belongs_to :user
-- belongs_to :post
 * ...
