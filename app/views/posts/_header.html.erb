@@ -1,0 +1,35 @@
+<header class="main-bar">
+  <div class="header-name">
+    <a href="#">hondeput</a>
+  </div>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag("hondeput-logo-color.png", class:"hondeput-icon"), "#" %>
+    <form class="search-form" action="#"> 
+      <input class='input-box' placeholder='キーワードから探す'>
+      <button class="search-button">
+       <%= image_tag "search.png", class:"search-icon" %> 
+      </button>
+    </form>
+  </div>
+
+  <div class='nav'>
+    <ul class='lists-right'>
+      <%# <% if user_signed_in?  %> 
+        <%# <div class="user_sub"> %>
+          <%# <li><%= link_to "", "#", class: "user-nickname"</li> 
+          <%# <li><%= link_to 'ログアウト', "#", method: :delete, class: 'btn' %></li> 
+        <%# </div> %>
+      <%# <% else %> 
+        <div class="user_sub">
+        <button type="button" class="btn btn-lg btn-primary" disabled>
+          <%= link_to 'ログイン',"#" , class: 'btn-gradient-3d-white' %>
+        </button>
+        <button type="button" class="btn btn-lg btn-primary" disabled>
+          <%= link_to '新規登録', "#", class: 'btn-gradient-3d-orange' %>
+        </button>
+        </div>
+      <%# <% end %>  
+    </ul>
+ </div>
+</header>
+
