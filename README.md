@@ -55,12 +55,12 @@
 
 ## posts テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| tittle  | string     | null: false                    |
-| text    | text       | null: false                    |
-| user_id | references | null: false, foreign_key: true |
-| body    | string     | null: false                    |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| title      | string     | null: false                    |
+| user_id     | references | null: false, foreign_key: true |
+| body        | text       | null: false                    |
+| impression  | text       | null: false                    |
 
 ### Association
 
