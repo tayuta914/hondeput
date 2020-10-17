@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>   
   </head>
 
   <body>
@@ -38,17 +38,17 @@
       <% if user_signed_in? %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
-            <%= link_to "新規投稿", "#", class: "navbar-item button is-warning is-light" %>
+            <%= link_to "アウトプット一覧",posts_path, class: "navbar-item button is-warning is-light" %>
           </div>
           <div class="navbar-item">
-            <%= link_to "人気投稿", "#", class: "navbar-item button is-warning is-light" %>
+            <%= link_to "新規投稿",new_post_path, class: "navbar-item button is-warning is-light" %>
           </div>
 
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
-                  <%= link_to "ホンデプット一覧", users_path, class: " button is-warning is-light" %>
+                  <%= link_to "ユーザー一覧", users_path, class: " button is-warning is-light" %>
                 </p>
                 <p class="control">
                   <%= link_to "マイページ", user_path(current_user), class: "button is-warning is-light" %>
@@ -63,10 +63,13 @@
       <% else %>
         <div id="navbarExampleTransparentExample" class="navbar-menu">
           <div class="navbar-item">
-            <%= link_to "新規投稿一覧", "#", class: "navbar-item button is-warning is-light" %>
+            <%= link_to "アウトプット一覧",posts_path, class: "navbar-item button is-warning is-light" %>
           </div>
           <div class="navbar-item">
-            <%= link_to "人気投稿一覧","#" , class: "navbar-item button is-warning is-light" %>
+            <%= link_to "新規投稿",new_post_path, class: "navbar-item button is-warning is-light" %>
+          </div>
+           <div class="navbar-item">
+              <%= link_to "ユーザー一覧", users_path, class: " button is-warning is-light" %>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -87,5 +90,3 @@
     <%= yield %>
   </body>
 </html>
-
- <%# <%= link_to image_tag("hondeput-logo-color.png", class:"hondeput-icon"), "#" %> 
