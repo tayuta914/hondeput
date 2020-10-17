@@ -47,3 +47,62 @@
     </div>
   </div>
 </section>
+
+<div class="contents row">
+  <p class="title is-4"><%= @user.username %>さんの投稿一覧</p>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-multiline">
+      　 <% @user.posts.each do |post| %>
+          <div class="column is-7">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                     <p class="title is-5"><%= post.title %></p>
+                  </div>
+                </div>
+                <div class="content">
+                  <table class="table is-narrow">
+                    <span class="name"><%= simple_format post.body %></span> 
+                  </table>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                       <%= link_to post_path(post), class: "panel-block" do %>
+                          <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span>
+                          このアウトプットを見る
+                        <% end %>
+                        <% if @user.id == current_user.id %>
+                          <%= link_to edit_post_path(post), class: "panel-block" do %>
+                            <span class="panel-icon">
+                              <i class="fas fa-edit"></i>
+                            </span>
+                              このアウトプットを編集する
+                          <% end %>
+                        
+                          <%= link_to post_path(post.id), method: :delete, data: {confirm: "削除しますか？"}, class: "panel-block" do %>
+                            <span class="panel-icon">
+                              <i class="fas fa-trash"></i>
+                            </span>
+                            このアウトプットを削除する
+                          <% end %>
+                        <% end %>
+                     </div>
+                    </div>
+                    <div class="content">
+                      <time><%= post.updated_at.strftime("%Y-%m-%d %H:%M") %></time>更新
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <div>
+  </section>
+</div>
