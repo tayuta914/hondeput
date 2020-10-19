@@ -13,6 +13,7 @@
     <div class="columns is-centered">
       <div class="column is-6">
         <%= form_for @post do |f|%>
+          <%= render 'layouts/error_messages', model: f.object %>
             <div class="field">
               <%= f.label :title, "本のタイトル", class: "label" %>
               <%= f.text_field :title, class: "input" %>
@@ -35,4 +36,4 @@
   </div>
 </section>
 
-    
+ 
