@@ -16,22 +16,31 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post)
+    if @post.valid?
+      @post.save
+     return redirect_to post_path(@post), notice: "アウトプットを投稿しました。"
+    else 
+      render :new
+    end
   end
 
   def edit
+    if @post.user != current_user
+      redirect_to posts_path, alert: '不正なアクセスです。'
+    end
   end
 
   def update
-    @post.update(post_params)
-    redirect_to posts_path(@post)
+    if @post.update(post_params)
+     redirect_to posts_path(@post), notice: "アウトプットを更新しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path
-    # redirect_to user_path(post.user), notice: "アウトプットを削除しました。"
+    redirect_to posts_path, notice: "アウトプットを削除しました。"
   end
 
   private

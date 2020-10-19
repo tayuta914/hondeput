@@ -1,0 +1,9 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       username: ユーザーネーム
+     post:
+       title: 本のタイトル
+       body: アクションプラン
+       impression: 感想
