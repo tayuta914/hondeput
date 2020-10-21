@@ -7,6 +7,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def new
@@ -32,7 +34,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-     redirect_to posts_path(@post), notice: "アウトプットを更新しました。"
+     redirect_to posts_path(@post), notice: "アウトプット情報を更新しました。"
     else
       render :edit
     end
