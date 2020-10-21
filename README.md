@@ -13,7 +13,7 @@
 ### Association
 - has_many :room_users
 - has_many :rooms, through: room_users
-- has_many :messages
+- has_many :comments
 - has_many :posts
 
 ## rooms テーブル
@@ -40,7 +40,7 @@
 - belongs_to :room
 - belongs_to :user
 
-## messages テーブル
+## comments テーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -51,7 +51,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :room
+- belongs_to :post
 
 ## posts テーブル
 
@@ -64,6 +64,7 @@
 
 ### Association
 
+- has_many :comments
 - belongs_to :user
 
 * ...
