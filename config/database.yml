@@ -50,6 +50,6 @@ test:
 production:
   <<: *default
   database: hondeput_production
-  username: hondeput
+  username: root
   password: <%= ENV['HONDEPUT_DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
