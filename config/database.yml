@@ -52,3 +52,4 @@ production:
   database: hondeput_production
   username: hondeput
   password: <%= ENV['HONDEPUT_DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
