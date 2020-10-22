@@ -66,24 +66,53 @@
   </div>
 </section>
 
-<div class="row">
-      <ul>
-          <li class="comment-create">
-              <h3 class="text-left title">コメント</h3>
-          </li>
-          <li id="comments_area">
-              <%= render partial: 'comments/index', locals: { comments: @comments } %>
-          </li>
-      </ul>
-      <hr>
-      <% if user_signed_in? %>
-        <div class="columns is-centered">
-            <div class="comment-create">
-                <h3 class="text-left">コメントを投稿する</h3>
-                <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+<div class="contents row">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-6">
+        <% if user_signed_in? %>
+          <%= form_with(model: [@post, @comment], local: true) do |form| %>
+            <div class="field">
+              <%# <%= form.text_area :content, placeholder: "コメントする", class: "textarea" %> 
+              <%= form.text_area :content, class: "form-control",class: "textarea" ,rows: 3 %>
+                <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+                  <i class="far fa-comments"></i> コメントする
+                <% end %>
+              <% end %>
             </div>
-          <div class="columns is-centered">
+        <% else %>
+          <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+        <% end %>
+        <div class="comments">
+          <h4>＜コメント一覧＞</h4>
+            <% @comments.each do |comment| %>
+            
+              <% unless comment.id.nil? %>
+                <li class="comment-container">
+                    <div class="comment-box">
+                        <div class="comment-avatar">
+                            <%= attachment_image_tag comment.user, :profile_image, fallback: "no_image.jpg", class:"comment-image", size: "40x40" %>
+                        </div>
+                        <div class="comment-text">
+                            <p><%= link_to "@#{comment.user.username}", users_path(comment.user.id) %></p>
+                            <div class="comment-entry">
+                                <%= comment.content %>
+                                <% if comment.user == current_user %>
+                                    <%= link_to post_comment_path(comment.post.id, comment.id), method: :delete, class: "comment_destroy" do %>
+                                        <i class="fas fa-trash" style="color: black;"></i>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                            <span class="comment-date pull-right">
+                                  <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+              <% end %>
+            <% end %>
         </div>
-      <% end %>
-    
+    </div>
+   </p>
  </div>
+</div>
